@@ -1,31 +1,28 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
-
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 1,
   workers: 5,
-  reporter: 'html',
+  reporter: "html",
   use: {
-    video: 'on-first-retry',
-    headless: false,
+    video: "on-first-retry",
+    headless: true,
   },
 
   projects: [
-
-
     {
-      name: 'chromium',
-      use: { 
-        ...devices['Desktop Chrome'],
-        viewport: {width: 1900, height: 1080} 
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1900, height: 1080 },
       },
     },
 
-  /*
+    /*
     
   {
       name: 'Google Chrome',
@@ -52,7 +49,7 @@ export default defineConfig({
       },
     },
 */
-   
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -62,8 +59,5 @@ export default defineConfig({
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
-
   ],
-
 });
-
